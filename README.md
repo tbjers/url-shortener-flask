@@ -12,6 +12,10 @@ pip install -r requirements.txt
 
 ### Install profanity-filter database
 
+URL Shortener uses the profanity-filter package to ensure that generated URL hashes do not contain profane words.
+
+Install the English dictionary:
+
 ```sh
 python -m spacy download en
 ```

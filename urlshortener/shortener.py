@@ -41,7 +41,6 @@ def create():
             flash(error)
         else:
             item = Url(url=url, public=public, title=title)
-            item.hash = item.generate_hash()
             current_app.logger.info(item.hash)
             db.session.add(item)
             db.session.commit()

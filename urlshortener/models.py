@@ -1,6 +1,7 @@
 import base58
 from profanity_filter import ProfanityFilter
 from sqlalchemy import desc
+from sqlalchemy.event import listens_for
 
 from .database import db
 
@@ -33,6 +34,10 @@ class Url(db.Model):
 
     def __repr__(self):
         return '<Url {}>'.format(self.hash)
+
+@listens_for(Url, 'before_insert')
+def generate_hash(mapper, connect, self):
+    self.generate_hash()
 
 class UrlClick(db.Model):
     id = db.Column(db.Integer, primary_key=True)

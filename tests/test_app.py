@@ -13,6 +13,13 @@ class UrlShortenerTests(unittest.TestCase):
         self.ctx = self.app.app_context()
         self.ctx.push()
 
+        try:
+            database.init_app(self.app)
+            database.init_db()
+        except Exception as ex:
+            print(ex)
+            self.fail('exception raised in init_app and init_db')
+
         self.client = self.app.test_client()
 
     def tearDown(self):
@@ -20,12 +27,4 @@ class UrlShortenerTests(unittest.TestCase):
 
     def test_app_runs(self):
         rv = self.client.get('/')
-        self.assertEqual(rv.status, '404 NOT FOUND')
-
-    def test_database_create(self):
-        try:
-            database.init_app(self.app)
-            database.init_db()
-        except Exception as ex:
-            print(ex)
-            self.fail('exception raised in init_app and init_db')
+        self.assertEqual(rv.status, '200 OK')

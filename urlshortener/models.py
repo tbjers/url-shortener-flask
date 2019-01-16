@@ -19,8 +19,7 @@ class Url(db.Model):
     def get_clean_id(self, id):
         if pf.is_clean(base58.b58encode_int(id).decode('utf-8')):
             return id
-        else:
-            return self.get_clean_id(id + 1)
+        return self.get_clean_id(id + 1)
 
     def generate_hash(self):
         latest = self.query.order_by(desc(Url.id)).first()
@@ -30,7 +29,6 @@ class Url(db.Model):
         max_id = self.get_clean_id(max_id)
         self.id = max_id
         self.hash = base58.b58encode_int(max_id).decode('utf-8')
-        return self.hash
 
     def __repr__(self):
         return '<Url {}>'.format(self.hash)

@@ -19,11 +19,11 @@ def index():
 def create():
     """Creates a new URL from input parameters
 
-    :returns: A rendered template"""
+    :returns: A redirect"""
     if request.method == 'POST':
         url = request.form['url']
         title = request.form['title']
-        public = request.form['public']
+        public = False
         error = None
 
         if not title:
@@ -32,16 +32,14 @@ def create():
         if not url:
             error = 'URL required'
 
-        if not public:
-            public = False
-        else:
+        if 'public' in request.form:
             public = True
 
         if error is not None:
             flash(error)
         else:
             item = Url(url=url, public=public, title=title)
-            current_app.logger.info(item.hash)
             db.session.add(item)
             db.session.commit()
+            current_app.logger.info('created URL {} with hash {}'.format(item.url, item.hash))
             return redirect(url_for('shortener.index'))

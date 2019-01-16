@@ -1,0 +1,11 @@
+base58==1.0.3
+coverage==4.5.1
+flask-cors==3.0.4
+Flask-SQLAlchemy==2.3.2
+flask-testing==0.7.1
+flask==1.0.2
+profanity-filter==1.0.4
+psycopg2-binary==2.7.6.1
+python-dotenv==0.10.0
+simplejson==3.16.0
+SQLAlchemy==1.2.15

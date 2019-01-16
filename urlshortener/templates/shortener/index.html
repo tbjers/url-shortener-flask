@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}URLs{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form action="{{ url_for('shortener.create') }}" method="post">
+        <label>Title: <input type="text" name="title" /></label>
+        <label>URL: <input type="text" name="url" /></label>
+        <label>Public: <input type="checkbox" name="public" value="1" /></label>
+        <button type="submit">Create</button>
+    </form>
+    {% for url in urls %}
+        <p>{{ url.id }}: {{ url.hash }}: {{ url.url }}</p>
+    {%endfor %}
+{% endblock %}

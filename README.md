@@ -1,4 +1,4 @@
-# URL Shortener applicaiton
+# URL Shortener application
 
 An application powered by Flask and PostgreSQL.
 

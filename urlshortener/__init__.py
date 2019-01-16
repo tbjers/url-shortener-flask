@@ -30,10 +30,13 @@ def create_app(config=None):
 
     # import dependencies
     from . import (
-        database
+        database, shortener
     )
 
     # initialize the database connection
     database.init_app(app)
+
+    # register application blueprints
+    app.register_blueprint(shortener.bp)
 
     return app

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}{{ url.title }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <ul>
+        <li>URL: <a href="{{ url_for('shortener.open_url', hash=url.hash) }}">{{ url.url }}</a></li>
+        <li>Number of clicks: {{ url.hits }}</li>
+        <li>Last clicked: {{ url.updated }}</li>
+    </ul>
+{% endblock %}

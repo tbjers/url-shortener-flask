@@ -2,8 +2,12 @@ import click
 from flask_sqlalchemy import SQLAlchemy
 from flask import current_app, g
 from flask.cli import with_appcontext
+import logging
 
 db = SQLAlchemy()
+
+logging.basicConfig()
+logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
 
 def init_db():
     db.drop_all()

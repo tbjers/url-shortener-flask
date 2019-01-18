@@ -2,20 +2,19 @@
 <html>
     <head>
         <title>{% block title %}{% endblock %} - URL Shortener</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='semantic/semantic.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='semantic/semantic.min.js') }}"></script>
     </head>
     <body>
-        <nav>
-            <h1>URL Shortener</h1>
-        </nav>
-        <section class="content">
-            <header>
-                {% block header %}{% endblock %}
-            </header>
-            {% for message in get_flashed_messages() %}
-                <div class="flash">{{ message }}</div>
-            {% endfor %}
-            {% block content %}{% endblock %}
-        </section>
+        {% block header %}{% endblock %}
+        {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% block content %}{% endblock %}
     </body>
 </html>

@@ -27,6 +27,7 @@ Create a file called `.env` in the project root.
 ```ini
 FLASK_APP=urlshortener
 FLASK_ENV=development
+FLASK_SECRET_KEY=<SUPER_SECRET_KEY>
 SQLALCHEMY_DATABASE_URI=postgresql://urlshortener_app:<RANDOM_PASSWORD>@localhost/urlshortener
 SQLALCHEMY_TRACK_MODIFICATIONS=True
 ```

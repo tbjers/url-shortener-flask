@@ -11,6 +11,9 @@ def create_app(config=None):
 
     app = Flask(__name__, instance_relative_config=True)
 
+    if 'FLASK_SECRET_KEY' in os.environ:
+        app.secret_key = os.environ['FLASK_SECRET_KEY']
+
     if 'SQLALCHEMY_DATABASE_URI' in os.environ:
         app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
 

@@ -1,17 +1,31 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}URLs{% endblock %}</h1>
+    <div class="pusher">
+        <div class="ui inverted vertical masthead center aligned segment">
+            <div class="ui text container">
+                <h1 class="ui inverted header">
+                    URL Shortener
+                </h1>
+                <form action="{{ url_for('shortener.create') }}" method="post">
+                    <div class="ui action left icon input huge">
+                        <i class="globe icon"></i>
+                        <input type="text" name="url" placeholder="Paste or type a URL..." />
+                        <button class="ui primary huge button" type="submit">Shorten <i class="right arrow icon"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block content %}
-    <form action="{{ url_for('shortener.create') }}" method="post">
-        <label>Title: <input type="text" name="title" /></label>
-        <label>URL: <input type="text" name="url" /></label>
-        <label>Public: <input type="checkbox" name="public" value="1" /></label>
-        <button type="submit">Create</button>
-    </form>
-    {% for url in urls %}
-        <p>{{ url.id }}: {{ url.hash }}: {{ url.url }}</p>
-    {%endfor %}
+    {% if urls.count() %}
+        <h2>Top URLs</h2>
+        <ul>
+        {% for url in urls %}
+            <li><a href="{{ url_for('shortener.info', hash=url.hash) }}">{{ url.title }}</a></li>
+        {%endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}

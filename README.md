@@ -69,3 +69,21 @@ This command starts the test suites:
 ```sh
 python -m unittest
 ```
+
+## Remaining out-of-scope exercises
+
+This application serves as an example of how one would create a URL Shortener application in Flask. Missing are a few vital features such as:
+
+* Authentication for admins
+* Store URLs for the current user by setting a cookie
+* Caching with Redis
+* Dockerize cluster with PostgreSQL, Redis and WSGI server
+* Log users in with social logins such as Google or Facebook
+* Support user/password authentication
+* Make backend entirely API/JSON
+* Convert frontend to React
+* Generate frontend via asset pipeline
+* Create deployment scripts
+* Support analytics tracking via external services such as Google Analytics
+* Mobile device support for App/Play Store links
+* Analytics dashboard for users

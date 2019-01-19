@@ -33,7 +33,7 @@ def create_app(config=None):
 
     # import dependencies
     from . import (
-        database, filters, handlers, shortener
+        database, filters, handlers, legal, shortener
     )
 
     # initialize handlers
@@ -47,5 +47,6 @@ def create_app(config=None):
 
     # register application blueprints
     app.register_blueprint(shortener.bp)
+    app.register_blueprint(legal.bp)
 
     return app

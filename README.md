@@ -67,8 +67,12 @@ flask run
 This command starts the test suites:
 
 ```sh
-python -m unittest
+pytest
 ```
+
+### Coverage output
+
+HTML Coverage can be found in the `htmlcov` directory.
 
 ## Remaining out-of-scope exercises
 

@@ -28,11 +28,11 @@
                 <div class="ui card">
                     <div class="content">
                         <div class="header"><a href="{{ url_for('shortener.open_url', hash=url.hash) }}">{{ url.title }}</a></div>
-                        <div class="meta">2 days ago</div>
+                        <div class="meta">{{ url.created | relative }}</div>
                     </div>
                     <div class="extra content">
                         <i class="eye icon"></i>
-                        {{ url.hits }} views
+                        {{ url.hits | number('decimal') }} views
                     </div>
                 </div>
                 <!--<li><a href="{{ url_for('shortener.info', hash=url.hash) }}">{{ url.title }}</a></li> -->

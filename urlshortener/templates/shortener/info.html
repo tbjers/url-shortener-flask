@@ -22,7 +22,7 @@
     </div>
     <div class="ui horizontal statistic">
         <div class="value">
-            {{ url.hits }}
+            {{ url.hits | number('decimal') }}
         </div>
         <div class="label">
             Clicks

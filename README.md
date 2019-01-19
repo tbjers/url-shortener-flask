@@ -32,6 +32,8 @@ SQLALCHEMY_DATABASE_URI=postgresql://urlshortener_app:<RANDOM_PASSWORD>@localhos
 SQLALCHEMY_TRACK_MODIFICATIONS=True
 ```
 
+The `FLASK_SECRET_KEY` parameter is required in order for flash messages to function correctly.
+
 ## Database configuration
 
 The URL Shortener service uses PostgreSQL as a database backend.

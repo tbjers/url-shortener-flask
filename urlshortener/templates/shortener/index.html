@@ -31,7 +31,7 @@
                         <div class="meta">{{ url.created | relative }}</div>
                     </div>
                     <div class="extra content">
-                        <i class="eye icon"></i>
+                        <a href="{{ url_for('shortener.info', hash=url.hash) }}"><i class="eye icon"></i></a>
                         {{ url.hits | number('decimal') }} views
                     </div>
                 </div>

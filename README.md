@@ -87,3 +87,4 @@ This application serves as an example of how one would create a URL Shortener ap
 * Support analytics tracking via external services such as Google Analytics
 * Mobile device support for App/Play Store links
 * Analytics dashboard for users
+* Roll up statistics by year, month and day

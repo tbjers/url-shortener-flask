@@ -1,0 +1,36 @@
+{% extends 'page.html' %}
+
+{% block header %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+<div class="ui main text container page">
+    {{ super() }}
+    <h1 class="ui header">
+        {% block title %}Torgny Bjers{% endblock %}
+    </h1>
+
+    <h2>Profile</h2>
+
+    <p>Torgny farms servers in the clouds and conjures confluent code from pixie dust and meteorite slag. If besought, he will help you find the castle with the princess.</p>
+
+    <h2>Experience</h2>
+
+    <h3>Software Development Team Lead, Passport; Charlotte, NC — 2016-2018</h3>
+    <p>Lead team migrating current payments and parking platform from a PHP monolith to a Node.js micro service architecture powered by AWS Lambda and DynamoDB.</p>
+    <h3>Lead Node.js developer, Clear Markets; Charlotte, NC — 2015-2016</h3>
+    <p>Developed Node.js applications aimed at automating and standardizing the electronic swap trade market. Lead developer on a major project for a Japanese client. Responsible for company’s migration from Subversion to GitHub. Introduced Docker. Champion of profitable projects nobody wants.</p>
+    <h3>Senior PHP Engineer, Beanstalk Data; Charlotte, NC — 2011-2013</h3>
+    <p>Responsible for Amazon Web Services Integration and Elastic Beanstalk deployments, software development in PHP, JavaScript, responsible for Continuous Integration and zero-downtime deployment systems as well as code standards and source code management.</p>
+    <h3>Senior Web Developer, bizjournals; Charlotte, NC — 2008-2011</h3>
+    <p>Spearheaded the mobile application development for bizjournals. Maintained and developed iPhone, Android, and BlackBerry applications for ACBJ's properties. Drove the bizjournals twitter initiative towards a stronger enterprise grade environment.</p>
+    <h3>Code Berserker, Xorcode; Charlotte, NC — 2003-present</h3>
+    <p>Responsible for Continuous Integration/Monitoring, Quality Assurance, Usability Conformance, Standards Compliance, Application/Database Security Audits, Intrusion Tests, as well as Mobile Application development.</p>
+
+    <h2>Skills</h2>
+    <p>
+        <div class="ui label">JavaScript</div><div class="ui label">Node.js</div><div class="ui label">React</div><div class="ui label">Jest</div><div class="ui label">Ruby</div><div class="ui label">Rails</div><div class="ui label">PHP</div><div class="ui label">Python</div><div class="ui label">Go</div><div class="ui label">Meteor</div><div class="ui label">CI/CD</div><div class="ui label">MongoDB</div><div class="ui label">DynamoDB</div><div class="ui label">MySQL</div><div class="ui label">PostgreSQL</div><div class="ui label">Redis</div><div class="ui label">ElasticSearch</div><div class="ui label">PredictionIO</div><div class="ui label">Angular</div><div class="ui label">Cordova</div><div class="ui label">Flutter</div><div class="ui label">Capistrano</div><div class="ui label">Code Coverage and Testing</div><div class="ui label">Express</div><div class="ui label">AWS</div><div class="ui label">Docker</div><div class="ui label">Kubernetes</div><div class="ui label">Jenkins</div><div class="ui label">Ansible</div><div class="ui label">Puppet
+    </p>
+
+{% endblock %}

@@ -1,13 +1,32 @@
-{% extends 'base.html' %}
+{% extends 'page.html' %}
 
 {% block header %}
-    <h1>{% block title %}{{ url.title }}{% endblock %}</h1>
+    {{ super() }}
 {% endblock %}
 
 {% block content %}
-    <ul>
-        <li>URL: <a href="{{ url_for('shortener.open_url', hash=url.hash) }}">{{ url.url }}</a></li>
-        <li>Number of clicks: {{ url.hits }}</li>
-        <li>Last clicked: {{ url.updated }}</li>
-    </ul>
+<div class="ui main text container page">
+    {{ super() }}
+    <h1 class="ui header">
+        <div class="sub header date">Created {{ url.created | datetime('full') }}</div>
+        {% block title %}{{ url.title }}{% endblock %}
+        <div class="sub header url"><a href="{{ url_for('shortener.open_url', hash=url.hash) }}">{{ url.url }}</a></div>
+    </h1>
+    <div class="ui grid url">
+        <div class ten wide"><a class="ui button primary tiny compact" href="{{ url_for('shortener.open_url', hash=url.hash) }}">{{ url_for('shortener.open_url', hash=url.hash, _external=True) }}</a></div>
+        <div class six wide">
+            <button class="ui basic button tiny compact">copy</button>
+            <button class="ui basic button tiny compact">share</button>
+            <button class="ui basic button tiny compact">edit</button>
+        </div>
+    </div>
+    <div class="ui horizontal statistic">
+        <div class="value">
+            {{ url.hits }}
+        </div>
+        <div class="label">
+            Clicks
+        </div>
+    </div>
+</div>
 {% endblock %}

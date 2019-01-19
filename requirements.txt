@@ -1,3 +1,4 @@
+babel==2.6.0
 base58==1.0.3
 beautifulsoup4==4.7.1
 coverage==4.5.1

@@ -1,4 +1,5 @@
 import base58
+import datetime
 from profanity_filter import ProfanityFilter
 from sqlalchemy import desc
 from sqlalchemy.event import listens_for
@@ -24,6 +25,7 @@ class Url(db.Model):
     title = db.Column(db.String(80), nullable=False)
     public = db.Column(db.Boolean, default=False, nullable=False)
     hits = db.Column(db.Integer, default=0)
+    created = db.Column(db.DateTime, default=datetime.datetime.today)
     updated = db.Column(db.DateTime)
 
     clicks = db.relationship('UrlClick', backref='url')

@@ -54,7 +54,8 @@ def create():
             flash(error)
             return redirect(url_for('shortener.index'))
         else:
-            item = Url(url=url, public=public, title=title)
+            cut_title = (title[:75] + '…') if len(title) > 75 else title
+            item = Url(url=url, public=public, title=cut_title)
             db.session.add(item)
             db.session.commit()
             current_app.logger.info('created URL {} with hash {}'.format(item.url, item.hash))

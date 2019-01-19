@@ -33,8 +33,14 @@ def create_app(config=None):
 
     # import dependencies
     from . import (
-        database, shortener
+        database, filters, handlers, shortener
     )
+
+    # initialize handlers
+    handlers.init_handlers(app)
+
+    # initialize filters
+    filters.init_filters(app)
 
     # initialize the database connection
     database.init_app(app)

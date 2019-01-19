@@ -1,0 +1,15 @@
+{% extends 'page.html' %}
+
+{% block header %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+<div class="ui main text container page">
+    {{ super() }}
+    <h1 class="ui header">
+        {% block title %}Page not found{% endblock %}
+    </h1>
+    <p>The page you requested cannot be found.</p>
+</div>
+{% endblock %}

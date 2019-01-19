@@ -7,6 +7,5 @@ def _format_datetime(value, format='medium'):
         format="dd.MM.y HH:mm"
     return format_datetime(value, format)
 
-
 def init_filters(app):
     app.jinja_env.filters['datetime'] = _format_datetime

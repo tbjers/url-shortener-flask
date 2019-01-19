@@ -16,7 +16,7 @@ def index():
     """Lists URLs
 
     :returns: A rendered template"""
-    urls = db.session.query(Url).order_by(desc(Url.hits)).limit(10)
+    urls = db.session.query(Url).order_by(desc(Url.hits)).limit(6)
     return render_template('shortener/index.html', urls=urls)
 
 @bp.route('/', methods=['POST'])
@@ -29,6 +29,7 @@ def create():
         public = False
         title = None
         error = None
+        exception = None
 
         try:
             html = url_request.urlopen(url).read()
@@ -43,6 +44,7 @@ def create():
                 current_app.logger.info('could not find og:title, defaulting to <title/>: {}'.format(title))
         except Exception as ex:
             error = 'Title could not be parsed from webpage'
+            exception = ex
 
         if not url:
             error = 'URL required'
@@ -52,6 +54,7 @@ def create():
 
         if error is not None:
             flash(error)
+            current_app.logger.error('{}: {}, Exception: {}'.format(error, url, exception))
             return redirect(url_for('shortener.index'))
         else:
             cut_title = (title[:75] + '…') if len(title) > 75 else title

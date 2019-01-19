@@ -7,7 +7,7 @@ import logging
 db = SQLAlchemy()
 
 logging.basicConfig()
-logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+logging.getLogger('sqlalchemy.engine').setLevel(logging.WARN)
 
 def init_db():
     db.drop_all()

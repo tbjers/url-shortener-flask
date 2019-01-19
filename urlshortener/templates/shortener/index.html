@@ -19,6 +19,29 @@
         </div>
     </div>
 
+    {% if urls.count() %}
+    <div class="ui vertical stripe segment">
+        <div class="ui text container">
+            <h3 class="ui header">Most visited URLs</h3>
+            <div class="ui three stackable cards">
+                {% for url in urls %}
+                <div class="ui card">
+                    <div class="content">
+                        <div class="header"><a href="{{ url_for('shortener.open_url', hash=url.hash) }}">{{ url.title }}</a></div>
+                        <div class="meta">2 days ago</div>
+                    </div>
+                    <div class="extra content">
+                        <i class="eye icon"></i>
+                        {{ url.hits }} views
+                    </div>
+                </div>
+                <!--<li><a href="{{ url_for('shortener.info', hash=url.hash) }}">{{ url.title }}</a></li> -->
+                {%endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
     <div class="ui vertical stripe quote segment">
         <div class="ui equal width stackable internally celled grid">
             <div class="center aligned row">
@@ -49,15 +72,6 @@
             <a class="ui large button">I'm Still Quite Interested</a>
         </div>
     </div>
-
-    {% if urls.count() %}
-        <h2>Top URLs</h2>
-        <ul>
-        {% for url in urls %}
-            <li><a href="{{ url_for('shortener.info', hash=url.hash) }}">{{ url.title }}</a></li>
-        {%endfor %}
-        </ul>
-    {% endif %}
 
     <div class="ui inverted vertical footer segment">
         <div class="ui container">

@@ -33,6 +33,7 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
+            pip install python-coveralls
 
       - run:
           name: install spacy models
@@ -56,6 +57,11 @@ jobs:
             . venv/bin/activate
             mkdir test_results
             pytest --junitxml=test_results/pytest/junit.xml
+
+      - run:
+          name: coverage
+          command: |
+            coveralls
 
       - store_test_results:
           path: test_results

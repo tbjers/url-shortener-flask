@@ -31,23 +31,24 @@ def create():
         error = None
         exception = None
 
-        try:
-            html = url_request.urlopen(url).read()
-            html[:60]
-            soup = BeautifulSoup(html, 'html.parser')
-            og_title = soup.find('meta', property='og:title')
-            current_app.logger.info('og:title={}, title={}'.format(og_title, soup.title))
-            if og_title:
-                title = og_title['content']
-            else:
-                title = soup.find('title').string
-                current_app.logger.info('could not find og:title, defaulting to <title/>: {}'.format(title))
-        except Exception as ex:
-            error = 'Title could not be parsed from webpage'
-            exception = ex
-
         if not url:
             error = 'URL required'
+
+        if error is None:
+            try:
+                html = url_request.urlopen(url).read()
+                html[:60]
+                soup = BeautifulSoup(html, 'html.parser')
+                og_title = soup.find('meta', property='og:title')
+                current_app.logger.info('og:title={}, title={}'.format(og_title, soup.title))
+                if og_title:
+                    title = og_title['content']
+                else:
+                    title = soup.find('title').string
+                    current_app.logger.info('could not find og:title, defaulting to <title/>: {}'.format(title))
+            except Exception as ex:
+                error = 'Title could not be parsed from webpage'
+                exception = ex
 
         if 'public' in request.form:
             public = True

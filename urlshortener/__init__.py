@@ -6,7 +6,7 @@ from flask_cors import CORS
 def create_app(config=None):
     """Creates and configures a Flask application
 
-    :param config: Configuration mapping, primarily used for testing
+    :param config: Configuration object, primarily used for testing
     :returns: A Flask application"""
 
     app = Flask(__name__, instance_relative_config=True)
@@ -21,7 +21,7 @@ def create_app(config=None):
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.environ['SQLALCHEMY_TRACK_MODIFICATIONS']
 
     if config:
-        app.config.from_mapping(config)
+        app.config.from_object(config)
 
     try:
         os.makedirs(app.instance_path)

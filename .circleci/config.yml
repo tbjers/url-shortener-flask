@@ -56,6 +56,5 @@ jobs:
             . venv/bin/activate
             pytest
 
-      - store_artifacts:
-          path: htmlcov
-          destination: htmlcov
+      - store_test_results:
+          path: test_results

@@ -34,6 +34,12 @@ jobs:
             . venv/bin/activate
             pip install -r requirements.txt
 
+      - run:
+          name: install spacy models
+          command: |
+            . venv/bin/activate
+            python3 -m spacy download en
+
       - save_cache:
           paths:
             - ./venv

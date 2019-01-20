@@ -1,6 +1,5 @@
 from datetime import timedelta, datetime
-from babel.numbers import format_number, format_decimal, format_percent
-from babel.dates import format_datetime, format_timedelta
+from flask_babel import format_datetime, format_percent, format_number, format_decimal, format_timedelta
 
 def _format_datetime(value, format='medium'):
     if format == 'full':

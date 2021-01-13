@@ -1,4 +1,6 @@
 version: 2
+orbs:
+  codecov: codecov/codecov@1.0.2
 jobs:
   build:
     docker:
@@ -37,13 +39,10 @@ jobs:
           command: |
             . venv/bin/activate
             mkdir test_results
-            pytest --junitxml=test_results/pytest/junit.xml
+            pytest --cov-report=xml --cov=urlshortener tests/
 
-      - run:
-          name: coverage
-          command: |
-            . venv/bin/activate
-            coveralls
+      - codecov/upload:
+          file: { { coverage_report_filepath } }
 
       - store_test_results:
           path: test_results

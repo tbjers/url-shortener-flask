@@ -1,12 +1,16 @@
+import spacy
 from profanity_filter import ProfanityFilter
 
-class TestProfanityFilter(object):
-    @classmethod
-    def setup_class(cls):
-        cls.pf = ProfanityFilter()
+nlp = spacy.load("en_core_web_sm")
+pf = ProfanityFilter(nlps={"en": nlp})
+nlp.add_pipe(pf.spacy_component, last=True)
 
+
+class TestProfanityFilter(object):
     def test_is_clean(self):
-        assert self.pf.is_clean('hello') == True
+        doc = nlp("hello")
+        assert doc._.is_profane == False
 
     def test_is_profane(self):
-        assert self.pf.is_profane('fuck') == True
+        doc = nlp("fuck")
+        assert doc._.is_profane == True

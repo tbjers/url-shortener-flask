@@ -4,6 +4,7 @@ from flask import Flask
 from flask_cors import CORS
 from flask_babel import Babel
 
+
 def create_app(config=None):
     """Creates and configures a Flask application
 
@@ -12,19 +13,21 @@ def create_app(config=None):
 
     app = Flask(__name__, instance_relative_config=True)
 
-    if 'FLASK_SECRET_KEY' in os.environ:
-        app.secret_key = os.environ['FLASK_SECRET_KEY']
+    if "FLASK_SECRET_KEY" in os.environ:
+        app.secret_key = os.environ["FLASK_SECRET_KEY"]
 
-    if 'SQLALCHEMY_DATABASE_URI' in os.environ:
-        app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
+    if "SQLALCHEMY_DATABASE_URI" in os.environ:
+        app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["SQLALCHEMY_DATABASE_URI"]
 
-    if 'SQLALCHEMY_TRACK_MODIFICATIONS' in os.environ:
-        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.environ['SQLALCHEMY_TRACK_MODIFICATIONS']
+    if "SQLALCHEMY_TRACK_MODIFICATIONS" in os.environ:
+        app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = os.environ[
+            "SQLALCHEMY_TRACK_MODIFICATIONS"
+        ]
 
-    if 'BABEL_DEFAULT_LOCALE' in os.environ:
-        app.config['BABEL_DEFAULT_LOCALE'] = os.environ['BABEL_DEFAULT_LOCALE']
+    if "BABEL_DEFAULT_LOCALE" in os.environ:
+        app.config["BABEL_DEFAULT_LOCALE"] = os.environ["BABEL_DEFAULT_LOCALE"]
     else:
-        app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+        app.config["BABEL_DEFAULT_LOCALE"] = "en"
 
     if config:
         app.config.from_object(config)
@@ -41,9 +44,7 @@ def create_app(config=None):
     babel = Babel(app)
 
     # import dependencies
-    from . import (
-        about, database, filters, handlers, legal, shortener
-    )
+    from . import about, database, filters, handlers, legal, shortener
 
     # initialize handlers
     handlers.init_handlers(app)

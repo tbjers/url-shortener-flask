@@ -20,7 +20,7 @@ URL Shortener uses the profanity-filter package to ensure that generated URL has
 Install the English dictionary:
 
 ```sh
-python -m spacy download en
+python -m spacy download en_core_web_sm
 ```
 
 ## Set up env configuration
@@ -83,17 +83,17 @@ HTML Coverage can be found in the `htmlcov` directory.
 
 This application serves as an example of how one would create a URL Shortener application in Flask. Missing are a few vital features such as:
 
-* Authentication for admins
-* Store URLs for the current user by setting a cookie
-* Caching with Redis
-* Dockerize cluster with PostgreSQL, Redis and WSGI server
-* Log users in with social logins such as Google or Facebook
-* Support user/password authentication
-* Make backend entirely API/JSON
-* Convert frontend to React
-* Generate frontend via asset pipeline
-* Create deployment scripts
-* Support analytics tracking via external services such as Google Analytics
-* Mobile device support for App/Play Store links
-* Analytics dashboard for users
-* Roll up statistics by year, month and day
+- Authentication for admins
+- Store URLs for the current user by setting a cookie
+- Caching with Redis
+- Dockerize cluster with PostgreSQL, Redis and WSGI server
+- Log users in with social logins such as Google or Facebook
+- Support user/password authentication
+- Make backend entirely API/JSON
+- Convert frontend to React
+- Generate frontend via asset pipeline
+- Create deployment scripts
+- Support analytics tracking via external services such as Google Analytics
+- Mobile device support for App/Play Store links
+- Analytics dashboard for users
+- Roll up statistics by year, month and day

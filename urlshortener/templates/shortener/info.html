@@ -16,8 +16,6 @@
         <div class ten wide"><a class="ui button primary tiny compact" href="{{ url_for('shortener.open_url', hash=url.hash) }}">{{ url_for('shortener.open_url', hash=url.hash, _external=True) }}</a></div>
         <div class six wide">
             <button class="ui basic button tiny compact">copy</button>
-            <button class="ui basic button tiny compact">share</button>
-            <button class="ui basic button tiny compact">edit</button>
         </div>
     </div>
     <div class="ui horizontal statistic">
@@ -26,6 +24,14 @@
         </div>
         <div class="label">
             Clicks
+        </div>
+    </div>
+    <div class="ui horizontal statistic">
+        <div class="value">
+            {{ unique_clicks | number('decimal') }}
+        </div>
+        <div class="label">
+            Users
         </div>
     </div>
 </div>

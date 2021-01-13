@@ -39,10 +39,13 @@ jobs:
           command: |
             . venv/bin/activate
             mkdir test_results
-            pytest --junitxml=test_results/pytest/junit.xml --cov-report=xml --cov=urlshortener tests/
+            pytest --cov-report=xml --cov=urlshortener tests/
 
-      - codecov/upload:
-          file: test_results/pytest/coverage.xml
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+          verbose: true
 
       - store_test_results:
           path: test_results

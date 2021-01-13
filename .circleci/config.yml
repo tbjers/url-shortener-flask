@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.2
 jobs:
@@ -42,7 +42,7 @@ jobs:
             pytest --cov-report=xml --cov=urlshortener tests/
 
       - codecov/upload:
-          file: { { coverage_report_filepath } }
+          file: "{{coverage_report_filepath}}"
 
       - store_test_results:
           path: test_results

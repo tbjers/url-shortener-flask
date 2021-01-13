@@ -29,6 +29,12 @@ def create_app(config=None):
     else:
         app.config["BABEL_DEFAULT_LOCALE"] = "en"
 
+    if "GOOGLE_CLIENT_ID" in os.environ:
+        app.config["GOOGLE_CLIENT_ID"] = os.environ["GOOGLE_CLIENT_ID"]
+
+    if "GOOGLE_CLIENT_SECRET" in os.environ:
+        app.config["GOOGLE_CLIENT_SECRET"] = os.environ["GOOGLE_CLIENT_SECRET"]
+
     if config:
         app.config.from_object(config)
 
@@ -41,7 +47,7 @@ def create_app(config=None):
     CORS(app)
 
     # Set up i18n/l10n support with Babel
-    babel = Babel(app)
+    Babel(app)
 
     # import dependencies
     from . import about, database, filters, handlers, legal, shortener

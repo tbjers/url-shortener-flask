@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/tbjers/url-shortener-flask.svg?style=shield&circle-token=87eb538a0eeb6290d4a139be4db573a8c2ea432c)](https://circleci.com/gh/tbjers/url-shortener-flask)
+[![CircleCI](https://circleci.com/gh/tbjers/url-shortener-flask.svg?style=shield&circle-token=4c757a3ce69b7ae74ef06f09e0ac5b78376f7727)](https://circleci.com/gh/tbjers/url-shortener-flask)
 [![Coverage Status](https://coveralls.io/repos/github/tbjers/url-shortener-flask/badge.svg?t=HSTDHE)](https://coveralls.io/github/tbjers/url-shortener-flask)
 
 # URL Shortener application

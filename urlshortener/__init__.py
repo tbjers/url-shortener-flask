@@ -5,6 +5,15 @@ from flask_cors import CORS
 from flask_babel import Babel
 
 
+CONFIG_PARAMS = [
+    "SQLALCHEMY_DATABASE_URI",
+    "SQLALCHEMY_TRACK_MODIFICATIONS",
+    "BABEL_DEFAULT_LOCALE",
+    "GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET",
+]
+
+
 def create_app(config=None):
     """Creates and configures a Flask application
 
@@ -16,24 +25,12 @@ def create_app(config=None):
     if "FLASK_SECRET_KEY" in os.environ:
         app.secret_key = os.environ["FLASK_SECRET_KEY"]
 
-    if "SQLALCHEMY_DATABASE_URI" in os.environ:
-        app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["SQLALCHEMY_DATABASE_URI"]
+    # Default, can be overridden below
+    app.config["BABEL_DEFAULT_LOCALE"] = "en"
 
-    if "SQLALCHEMY_TRACK_MODIFICATIONS" in os.environ:
-        app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = os.environ[
-            "SQLALCHEMY_TRACK_MODIFICATIONS"
-        ]
-
-    if "BABEL_DEFAULT_LOCALE" in os.environ:
-        app.config["BABEL_DEFAULT_LOCALE"] = os.environ["BABEL_DEFAULT_LOCALE"]
-    else:
-        app.config["BABEL_DEFAULT_LOCALE"] = "en"
-
-    if "GOOGLE_CLIENT_ID" in os.environ:
-        app.config["GOOGLE_CLIENT_ID"] = os.environ["GOOGLE_CLIENT_ID"]
-
-    if "GOOGLE_CLIENT_SECRET" in os.environ:
-        app.config["GOOGLE_CLIENT_SECRET"] = os.environ["GOOGLE_CLIENT_SECRET"]
+    for param in CONFIG_PARAMS:
+        if param in os.environ:
+            app.config[param] = os.environ[param]
 
     if config:
         app.config.from_object(config)

@@ -39,10 +39,10 @@ jobs:
           command: |
             . venv/bin/activate
             mkdir test_results
-            pytest --cov-report=xml --cov=urlshortener tests/
+            pytest --junitxml=test_results/pytest/junit.xml --cov-report=xml --cov=urlshortener tests/
 
       - codecov/upload:
-          file: "{{coverage_report_filepath}}"
+          file: test_results/pytest/coverage.xml
 
       - store_test_results:
           path: test_results

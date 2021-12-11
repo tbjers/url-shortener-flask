@@ -3,7 +3,7 @@ base58==1.0.3
 beautifulsoup4==4.7.1
 blinker==1.4
 coverage==4.5.1
-flask-cors==3.0.4
+flask-cors==3.0.9
 Flask-SQLAlchemy==2.3.2
 flask-testing==0.7.1
 flask==1.0.2
